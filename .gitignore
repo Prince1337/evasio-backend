@@ -25,11 +25,6 @@ logs/
 # Compiled bytecode
 *.class
 
-# Package files
-*.jar
-*.war
-*.ear
-
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

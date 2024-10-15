@@ -1,0 +1,8 @@
+
+½
+java:S6204"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8ı´‚ …2J$c7595bc2-3308-4b31-a8df-271146ff78e8
+m	java:S106""+Replace this use of System.out by a logger.(Ííö8¤¬­±‚2J$e328f45c-480d-4368-8ca1-436544a2e9df
+~	java:S1252"<This block of commented-out lines of code should be removed.(·ùñÆ8÷ğ¬±‚2J$bbf4d8be-9c69-488a-8627-70e0ee9fa1f7
+~	java:S125?"<This block of commented-out lines of code should be removed.(Ãµî¸8÷ğ¬±‚2J$b9a9896a-ea0b-48b0-a1f7-c575a4e286cb
+~	java:S125d"<This block of commented-out lines of code should be removed.(éšşŸ8úğ¬±‚2J$0533b7ae-2fdd-4c9c-85ac-945094ec1874
+ƒ	java:S125q"<This block of commented-out lines of code should be removed.(šÆƒ¡øÿÿÿÿ8úğ¬±‚2J$941d1d47-cc12-44d1-8fa9-852d5683a574

@@ -1,0 +1,23 @@
+
+®
+java:S1488F"fImmediately return this expression instead of assigning it to the temporary variable "filteredTopics".(ì´äªúÿÿÿÿ8ë¹ŠÅÿ1J$882ef1cc-aa0b-4763-89f0-0b15f2c85aa7
+š
+java:S1192™"QDefine a constant instead of duplicating this literal "Module not found" 4 times.(Ö±ßÚıÿÿÿÿ8î¹ŠÅÿ1J$20c8d8f8-0590-480a-a67a-6f3f9b8e7f61
+m	java:S106®"+Replace this use of System.out by a logger.(¹‡B8øËŠÅÿ1J$d2ca6045-2420-4ae2-9c9c-23ae13b43bb6
+s	java:S106´"+Replace this use of System.out by a logger.(¿˜åîıÿÿÿÿ8ùËŠÅÿ1J$3ab0e729-242f-4444-b016-d8522843f13b
+s	java:S106»"+Replace this use of System.out by a logger.(È¯°¸ûÿÿÿÿ8úËŠÅÿ1J$e5c37768-ba1c-43be-81df-2f0f014f56ea
+n	java:S106¼"+Replace this use of System.out by a logger.(­¾Ìó8úËŠÅÿ1J$d2a2c960-e6d4-4751-8564-4c7afb50b171
+s	java:S106½"+Replace this use of System.out by a logger.(ª§†“ûÿÿÿÿ8úËŠÅÿ1J$904a22f9-daf4-49d6-ad5d-3a2832794886
+s	java:S106¾"+Replace this use of System.out by a logger.(Ä¾öùÿÿÿÿ8úËŠÅÿ1J$266fb203-026a-4b94-8cfa-b8d799426033
+¾
+java:S6204ç"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(‡’ÑŞ8€ÌŠÅÿ1J$ede04c50-7cc2-4255-91a7-5a59f97272c1
+ˆ
+java:S1854ˆ"?Remove this useless assignment to local variable "userModules".(¿Çäİıÿÿÿÿ8ƒÌŠÅÿ1J$a24cbbdb-f097-409f-877c-1550b186510e
+y
+java:S1481ˆ"0Remove this unused "userModules" local variable.(¿Çäİıÿÿÿÿ8…ÌŠÅÿ1J$802ccb79-0c87-4ca4-9e5d-f69d8b6af3c6
+s	java:S106Š"+Replace this use of System.out by a logger.(æ•‡Íøÿÿÿÿ8…ÌŠÅÿ1J$d519cfe0-82f4-4dd3-8983-30609039ed4f
+n	java:S106‹"+Replace this use of System.out by a logger.(¿×¿ú8…ÌŠÅÿ1J$cbf29155-8911-42dc-b894-ab2f82a91a21
+n	java:S106"+Replace this use of System.out by a logger.(ãĞéí8†ÌŠÅÿ1J$36159554-82b3-42f5-92bb-c8e986f1b335
+s	java:S106‘"+Replace this use of System.out by a logger.(‹Õ”ıÿÿÿÿÿ8‡ÌŠÅÿ1J$f6cf5259-c996-4cdb-90c5-bc3cb5ad6689
+n	java:S106œ"+Replace this use of System.out by a logger.(‡©¿8Ä‹ƒáÿ1J$b37fde77-299e-4c47-8b12-65a98b672f9a
+	java:S125"<This block of commented-out lines of code should be removed.(ªü†ˆ8ˆÌŠÅÿ1J$ae198d0b-3972-4ac8-8783-7e33e44d5074

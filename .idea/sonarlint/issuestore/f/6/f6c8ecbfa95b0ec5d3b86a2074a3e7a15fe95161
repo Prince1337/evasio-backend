@@ -1,0 +1,9 @@
+
+r	java:S1062"+Replace this use of System.out by a logger.(¶®éÓøÿÿÿÿ8óœè‚2J$3d2ab8de-c5e4-4f90-a12c-bf6b61e229ed
+r	java:S1063"+Replace this use of System.out by a logger.(ä¡†Ğÿÿÿÿÿ8‘óœè‚2J$0764b75a-a90e-4532-9062-efd07c32a19d
+r	java:S106B"+Replace this use of System.out by a logger.(ùÁõìüÿÿÿÿ8•óœè‚2J$28163072-c2f2-4333-bec9-89666c7959bb
+s	java:S106ƒ"+Replace this use of System.out by a logger.(Å×Ø›øÿÿÿÿ8¦óœè‚2J$a6767540-bc24-4070-a6b3-7003edec7715
+{
+java:S1128"3Remove this unused import 'evasio.dto.CustomerDTO'.(„Ì­©ûÿÿÿÿ8½‰‰¢…2J$2cd825c2-9e0d-4cf6-89fc-b07ec9a1bff1
+Œ
+java:S1128"DRemove this unused import 'org.springframework.http.ResponseEntity'.(¶¯ø¦úÿÿÿÿ8Ì‰‰¢…2J$6d8b1ace-c865-48af-a8b2-a3d209ad5b64

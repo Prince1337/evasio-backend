@@ -3,7 +3,7 @@
 !**/build/libs
 
 # IntelliJ IDEA files
-backend/.idea/
+.idea/
 *.iml
 *.ipr
 *.iws

@@ -1,6 +1,5 @@
 package evasio.api;
 
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.checkout.Session;
 import evasio.dto.SubscriptionDTO;
@@ -8,9 +7,8 @@ import evasio.services.SubscriptionService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +35,8 @@ public class SubscriptionController {
         apiKey = stripeApiKey;
     }
 
-    @GetMapping
-    public List<SubscriptionDTO> getActiveSubscriptions(String customerId) throws StripeException {
+    @GetMapping("/customer/{customerId}")
+    public List<SubscriptionDTO> getActiveSubscriptions(@PathVariable String customerId) throws StripeException {
         System.out.println("getActiveSubscriptions called with customerId: " + customerId);
 
         return subscriptionService.getActiveSubscription(customerId);

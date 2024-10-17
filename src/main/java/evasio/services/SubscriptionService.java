@@ -18,7 +18,6 @@ public class SubscriptionService {
         SubscriptionListParams params =
                 SubscriptionListParams.builder()
                         .setCustomer(customerId)
-                        .setStatus(SubscriptionListParams.Status.valueOf("active"))
                         .build();
 
         SubscriptionCollection subscriptions = Subscription.list(params);

@@ -1,0 +1,6 @@
+
+ˆ	java:S112?"FDefine and throw a dedicated exception instead of using a generic one.(¹ÖÄ±8éØïÔ‚2J$a0dd0853-79d1-48e9-930e-f56c101a33dc
+½
+java:S6204"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8ïØïÔ‚2J$f10c73d7-1235-4dc3-9fb3-504fc66e9782
+Â
+java:S62042"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ùäÒ¦ıÿÿÿÿ8ïØïÔ‚2J$58be402d-4459-45e9-94ed-395224dab43c

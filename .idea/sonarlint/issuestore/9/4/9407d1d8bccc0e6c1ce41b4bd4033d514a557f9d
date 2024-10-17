@@ -1,0 +1,17 @@
+
+y
+java:S2696,"6Make the enclosing method "static" or remove this set.(­‹§8‡¾Ôä‚2J$893be945-2a52-45f0-b78f-6310a9dc9283
+n
+java:S1452V"&Remove usage of generic wildcard type.(¶›Êüÿÿÿÿ8Œ¾Ôä‚2J$f897bbb5-afbc-41ca-a0f0-0bcf0618166c
+i
+java:S1452\"&Remove usage of generic wildcard type.(ê×şè8¾Ôä‚2J$36ee3e4d-e14d-4a03-8698-96646e8f86c0
+~
+java:S1128"6Remove this unused import 'com.stripe.model.Customer'.(‚ÆùÑıÿÿÿÿ8é®‚ …2J$fd87ec7b-cd7c-4435-9b66-de70397e41b2
+Š
+java:S1128"BRemove this unused import 'com.stripe.param.CustomerCreateParams'.(íÎÕÿÿÿÿÿ8é®‚ …2J$e303686c-88f1-4468-9b50-354874f5e103
+{
+java:S1128"3Remove this unused import 'evasio.dto.CustomerDTO'.(„Ì­©ûÿÿÿÿ8é®‚ …2J$ae7fe72c-3250-4b86-8ccd-c9279ff5ac78
+
+java:S1128	"<Remove this unused import 'evasio.services.CustomerService'.(Óò¢8ë®‚ …2J$6e0c0440-cfdb-4303-8014-9817fcbecd82
+ƒ
+java:S1128";Remove this unused import 'io.jsonwebtoken.io.IOException'.(ô™õ­şÿÿÿÿ8ë®‚ …2J$3569fb93-02f8-4030-a3bf-d34def8f5f32

@@ -1,0 +1,17 @@
+
+m	java:S1068"+Replace this use of System.out by a logger.(‰¤œŒ8°œ¥…2J$4147ea44-5f8b-49aa-9b7c-50a5cdcb12d3
+½
+java:S6204B"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ï½ö8³œ¥…2J$16eb765c-8921-4068-b0ea-f52fbe871c42
+m	java:S106G"+Replace this use of System.out by a logger.(Ú©¹Ä8µœ¥…2J$86754c75-140b-4682-806d-3b95d9488525
+m	java:S106H"+Replace this use of System.out by a logger.(®ê–¯8µœ¥…2J$55882865-d8ee-4a0b-abc1-b986e03ee1da
+½
+java:S6204k"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(’ì‡8™‚œ¥…2J$146036bb-fd32-4f8b-abeb-6f251b1d1c5e
+¾
+java:S6204ˆ"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8™‚œ¥…2J$2137f3ce-1edd-428a-ac79-86a359466b8f
+¾
+java:S6204±"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(ª™¨¹8™‚œ¥…2J$f0bcb006-4031-4b46-9d97-c3ac5c87bad3
+c
+java:S1128	"ARemove this unused import 'evasio.repositories.ModuleRepository'.(—ùßÿÿÿÿÿ8Á´¡¥…2
+\
+java:S1128
+"?Remove this unused import 'evasio.repositories.QuizRepository'.(ĞÑ–8Á´¡¥…2

@@ -1,0 +1,11 @@
+
+
+java:S1128"JRemove this unused import 'com.fasterxml.jackson.annotation.JsonProperty'.(ËÃ§Ï8àİ•°‚2J$ece3b5b9-1e79-4080-bff3-ddaf07961f52
+z
+java:S1128"7Remove this unused import 'evasio.dto.SubscriptionDTO'.(¥†¾Š8àİ•°‚2J$74772adc-9ece-4ee9-9e84-a99b4b3ed79b
+‚
+java:S1128":Remove this unused import 'jakarta.persistence.ManyToOne'.(áîÖãùÿÿÿÿ8àİ•°‚2J$a3ecdd54-3f5b-4b71-8a14-7d9ac8a37b49
+s
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8àİ•°‚2J$3d2c69bc-81f5-4574-9e32-13d008c5ebf0
+r
+java:S1128"*Remove this unused import 'java.util.Map'.(¼è½Òşÿÿÿÿ8àİ•°‚2J$daecacc4-be72-4f5f-b6f9-e3fee8526c82

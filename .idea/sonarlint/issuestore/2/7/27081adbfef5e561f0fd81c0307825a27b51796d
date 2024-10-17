@@ -1,0 +1,5 @@
+
+Â
+java:S6204"zReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()' and ensure that the list is unmodified.(£†Á„þÿÿÿÿ8üÉ«µ‚2J$1d0370a0-83f9-43f6-9eac-d920dd5b80eb
+†
+java:S1128"CRemove this unused import 'org.aspectj.apache.bcel.classfile.Code'.(²¯Õ–8´ÁÐ·‚2J$d1b8346d-812d-4bec-b958-073da5ab6f52

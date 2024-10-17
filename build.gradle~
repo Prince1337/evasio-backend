@@ -1,16 +1,25 @@
 plugins {
 	id 'java'
+<<<<<<< HEAD
 	id 'org.springframework.boot' version '3.3.4'
 	id 'io.spring.dependency-management' version '1.1.6'
+=======
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556
 }
 
 group = 'evasio'
 version = '0.0.1-SNAPSHOT'
 
 java {
+<<<<<<< HEAD
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
+=======
+	sourceCompatibility = '17'
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556
 }
 
 configurations {
@@ -31,12 +40,16 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
+<<<<<<< HEAD
 
 	// mysql connector
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'mysql:mysql-connector-java:8.0.34'
 	implementation 'org.hibernate.orm:hibernate-core:6.5.3.Final'
 
+=======
+	runtimeOnly 'com.mysql:mysql-connector-j'
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
@@ -45,7 +58,11 @@ dependencies {
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	// stripe
+<<<<<<< HEAD
 	implementation "com.stripe:stripe-java:20.94.0"
+=======
+    implementation "com.stripe:stripe-java:20.94.0"
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556
 
 	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
@@ -53,6 +70,10 @@ dependencies {
 
 	//gson
 	implementation 'com.google.code.gson:gson:2.10.1'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556
 }
 
 jar {
@@ -66,4 +87,8 @@ jar {
 
 tasks.named('test') {
 	useJUnitPlatform()
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6af6bcdc5b52117d841e5e369b5730dfba086556

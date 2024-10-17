@@ -1,0 +1,35 @@
+
+	java:S112T"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÇÔ¸ê‚2J$ab4e859f-938e-444f-8541-7369e566fe36
+y
+java:S2696."6Make the enclosing method "static" or remove this set.(­‹§8ËÔ¸ê‚2J$9735c66b-17d8-4093-888f-cf46865bd376
+r	java:S1063"+Replace this use of System.out by a logger.(¦­â÷üÿÿÿÿ8ÎÔ¸ê‚2J$2a04605f-6322-4cd9-b091-95f994c5eacb
+m	java:S1064"+Replace this use of System.out by a logger.(Áò½ß8ÎÔ¸ê‚2J$f2b0c15e-cc42-48bc-9326-62090a3c2119
+r	java:S1068"+Replace this use of System.out by a logger.(š·…ïüÿÿÿÿ8ÏÔ¸ê‚2J$03b7dbec-8bd7-4913-94b4-c52f13c7d18c
+m	java:S106:"+Replace this use of System.out by a logger.(‰½Ô¯8ÏÔ¸ê‚2J$dfb2828b-7e48-4a7d-9617-bddc9ba6af7e
+r	java:S106="+Replace this use of System.out by a logger.(€ˆÛºüÿÿÿÿ8ÏÔ¸ê‚2J$5979e556-e678-4f33-ac49-3ae907df2e8f
+m	java:S106V"+Replace this use of System.out by a logger.(ùª8ÔÔ¸ê‚2J$05492c0c-ab9f-46b2-bb95-01bd8e4a7f31
+t
+java:S1128"1Remove this unused import 'com.google.gson.Gson'.(–§8ÖÔ¸ê‚2J$e6454141-6cd7-4e35-a5e7-0123848b045c
+~
+java:S1128";Remove this unused import 'com.stripe.model.PaymentIntent'.(«ÁÛ8ÖÔ¸ê‚2J$3fc7f0e4-5ccb-47fb-8876-efae6a728632
+ƒ
+java:S1128";Remove this unused import 'com.stripe.model.PaymentMethod'.(‚ÆÆÄıÿÿÿÿ8ÖÔ¸ê‚2J$cdae4dcf-7c1d-4667-aecd-748fb62e10c7
+}
+java:S1128":Remove this unused import 'com.stripe.model.Subscription'.(ˆ—ìÅ8ÖÔ¸ê‚2J$d2c5c71b-e9b3-44eb-9ec0-bdd14cbaa557
+Š
+java:S1128
+"GRemove this unused import 'com.stripe.param.PaymentIntentCreateParams'.(ÄËâè8ÖÔ¸ê‚2J$f2bc29aa-38b2-4329-ae1b-aa30fffc2afd
+Š
+java:S1128"GRemove this unused import 'com.stripe.param.PaymentMethodCreateParams'.(ÓÓæ²8ÖÔ¸ê‚2J$7efc36ca-052b-415e-9183-7de2cbb7371c
+‰
+java:S1128"FRemove this unused import 'com.stripe.param.SubscriptionCreateParams'.(ñè¡ª8ÖÔ¸ê‚2J$1a4c881a-bfad-458f-b1fe-35cb8268a8a8
+‹
+java:S1128"CRemove this unused import 'com.sun.tools.jconsole.JConsoleContext'.(ÕÆüéşÿÿÿÿ8ÖÔ¸ê‚2J$de93f72c-bd3c-480b-a331-44fd70bc7c7c
+z
+java:S1128"2Remove this unused import 'evasio.model.Customer'.(®øµüüÿÿÿÿ8×Ô¸ê‚2J$3004033a-aea2-4769-b59e-7fdc9ec868ff
+r
+java:S1128"/Remove this unused import 'evasio.model.Price'.(œû¥ù8×Ô¸ê‚2J$38f72d70-d3c6-4739-83cc-46981b736a5b
+›
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8×Ô¸ê‚2J$04fd691b-8c17-4406-a2c9-47ee56895e06
+w
+java:S1128"/Remove this unused import 'java.util.Optional'.(¨˜ëİüÿÿÿÿ8×Ô¸ê‚2J$59cb18cb-d89b-4877-a29f-4d4f173d3a75

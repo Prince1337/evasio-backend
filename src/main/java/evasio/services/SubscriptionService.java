@@ -6,10 +6,12 @@ import com.stripe.model.SubscriptionCollection;
 import com.stripe.param.SubscriptionListParams;
 import evasio.dto.SubscriptionDTO;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class SubscriptionService {
 
     public List<SubscriptionDTO> getActiveSubscription(String customerId) throws StripeException {

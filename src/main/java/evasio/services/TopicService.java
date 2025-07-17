@@ -60,11 +60,14 @@ public class TopicService {
             existingTopic.setCategory(topicDto.getCategory());
             existingTopic.setDifficulty(topicDto.getDifficulty());
             existingTopic.setDescription(topicDto.getDescription());
-            // Update the modules
+            // Update the modules using helper methods
             if (topicDto.getModules() != null) {
-                // convert the list of ModuleDTO to list of Module
-                List<Module> modules = topicDto.getModules().stream().map((ModuleDTO moduleDto) -> convertModuleDtoToEntity(moduleDto, existingTopic)).collect(Collectors.toList());
-                existingTopic.setModules(modules);
+                // Clear existing modules first
+                existingTopic.getModules().clear();
+                // Add new modules using helper method
+                topicDto.getModules().stream()
+                    .map(moduleDto -> convertModuleDtoToEntity(moduleDto, existingTopic))
+                    .forEach(existingTopic::addModule);
             }
             // Save the updated topic
             Topic updatedTopic = topicRepository.save(existingTopic);
@@ -85,12 +88,16 @@ public class TopicService {
         TopicDTO topicDto = TopicDTO.builder()
                 .topicId(topic.getTopicId())
                 .title(topic.getTitle())
-                .description(topic.getDescription()) // Set description
-                .category(topic.getCategory()) // Set category
-                .difficulty(topic.getDifficulty()) // Set difficulty
+                .description(topic.getDescription())
+                .category(topic.getCategory())
+                .difficulty(topic.getDifficulty())
                 .build();
-        if (topic.getModules() != null) {
-            List<ModuleDTO> moduleDtos = topic.getModules().stream().map(this::convertModuleToDto).toList();
+        
+        // Ensure modules are loaded and converted
+        if (topic.getModules() != null && !topic.getModules().isEmpty()) {
+            List<ModuleDTO> moduleDtos = topic.getModules().stream()
+                    .map(this::convertModuleToDto)
+                    .toList();
             topicDto.setModules(moduleDtos);
         }
         return topicDto;
@@ -103,8 +110,12 @@ public class TopicService {
                 .title(module.getTitle())
                 .content(module.getContent())
                 .build();
-        if (module.getQuizzes() != null) {
-            List<QuizDTO> quizDtos = module.getQuizzes().stream().map(this::convertQuizToDto).collect(Collectors.toList());
+        
+        // Ensure quizzes are loaded and converted
+        if (module.getQuizzes() != null && !module.getQuizzes().isEmpty()) {
+            List<QuizDTO> quizDtos = module.getQuizzes().stream()
+                    .map(this::convertQuizToDto)
+                    .collect(Collectors.toList());
             moduleDto.setQuizzes(quizDtos);
         }
         return moduleDto;
@@ -131,10 +142,9 @@ public class TopicService {
                 .build();
 
         if (topicDto.getModules() != null) {
-            List<Module> modules = topicDto.getModules().stream()
+            topicDto.getModules().stream()
                     .map(dto -> convertModuleDtoToEntity(dto, topic))
-                    .collect(Collectors.toList());
-            topic.setModules(modules);
+                    .forEach(topic::addModule);
         }
         return topic;
     }
@@ -149,10 +159,9 @@ public class TopicService {
                 .build();
 
         if (moduleDto.getQuizzes() != null) {
-            List<Quiz> quizzes = moduleDto.getQuizzes().stream()
+            moduleDto.getQuizzes().stream()
                     .map(quizDto -> convertQuizDtoToEntity(quizDto, module))
-                    .toList();
-            module.setQuizzes(quizzes);
+                    .forEach(module::addQuiz);
         }
         return module;
     }

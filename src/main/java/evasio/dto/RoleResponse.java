@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RoleResponse {
 
-    String id;
+    Long id;
     String name;
 
 }

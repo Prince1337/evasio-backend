@@ -79,7 +79,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
                 .build();
     }
 
-    public UserResponse getUser(Long id) {
+    public UserResponse getUser(String id) {
         Optional<User> optional = userRepository.findById(id);
         if (optional.isEmpty()) {
             throw new UsernameNotFoundException("User not found");

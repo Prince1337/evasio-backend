@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @GetMapping("/admin/user/{id}")
-    public ResponseEntity<UserResponse> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserResponse> getUser(@PathVariable String id) {
         logger.info("getUser request received. User ID: {}", id);
         UserResponse response = userDetailsService.getUser(id);
         logger.info("getUser response: {}", response);
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PutMapping("/admin/user/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody RegisterRequest updatedUser) {
+    public ResponseEntity<UserResponse> updateUser(@PathVariable String id, @RequestBody RegisterRequest updatedUser) {
         logger.info("updateUser request received. User ID: {}, Updated User: {}", id, updatedUser);
         ResponseEntity<UserResponse> response = ResponseEntity.ok(authenticationService.updateUser(updatedUser));
         logger.info("updateUser response: {}", response);

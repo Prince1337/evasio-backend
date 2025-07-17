@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -42,27 +41,31 @@ public class QuizService {
     @Transactional
     public QuizDTO add(QuizDTO quizDto) {
         Quiz quiz = convertToEntity(quizDto);
-        Quiz savedQuiz = quizRepository.save(quiz);
         Module module = moduleRepository.findModuleById(quizDto.getModuleId());
-        //module.getQuizzes().add(quiz);
+        module.addQuiz(quiz);
         moduleRepository.save(module);
-        return convertToDto(savedQuiz);
+        return convertToDto(quiz);
     }
 
     @Transactional
     public QuizDTO update(QuizDTO quizDto) {
         Quiz oldQuiz = quizRepository.findQuizById(quizDto.getId());
         if (oldQuiz != null) {
-
             oldQuiz.setId(quizDto.getId());
             oldQuiz.setQuestion(quizDto.getQuestion());
             oldQuiz.setOptions(quizDto.getOptions());
             oldQuiz.setQuestionType(quizDto.getQuestionType());
             oldQuiz.setMatchingOptions(quizDto.getMatchingOptions());
             oldQuiz.setCorrectAnswer(quizDto.getCorrectAnswer());
-            oldQuiz.setModule(moduleRepository.findModuleById(quizDto.getModuleId()));
-            Module module = moduleRepository.findModuleById(quizDto.getModuleId());
-            moduleRepository.save(module);
+            
+            // Update module relationship if changed
+            Module newModule = moduleRepository.findModuleById(quizDto.getModuleId());
+            if (!newModule.getId().equals(oldQuiz.getModule().getId())) {
+                oldQuiz.getModule().removeQuiz(oldQuiz);
+                newModule.addQuiz(oldQuiz);
+                moduleRepository.save(newModule);
+            }
+            
             return convertToDto(quizRepository.save(oldQuiz));
         } else {
             throw new ResourceNotFoundException("Quiz not found with id " + quizDto.getId());

@@ -68,7 +68,7 @@ public class UserTopicService {
         List<Topic> topics = topicRepository.findAll();
         // get all topics that are not user topics
         List<Topic> filteredTopics = topics.stream()
-                .filter(topic -> !userTopicRepository.existsByUserIdAndTopicId(userId, topic.getTopicId()))
+                .filter(topic -> !userTopicRepository.existsByUserIdAndTopicTopicId(userId, topic.getTopicId()))
                 .toList();
 
         return filteredTopics;
@@ -83,7 +83,7 @@ public class UserTopicService {
                 .toList();
 
         return filteredUserTopics.stream()
-                .map(userTopic -> topicRepository.findById(userTopic.getTopicId()).orElse(null))
+                .map(userTopic -> topicRepository.findById(userTopic.getTopic().getTopicId()).orElse(null))
                 .filter(Objects::nonNull)
                 .toList();
     }
@@ -97,7 +97,7 @@ public class UserTopicService {
                 .toList();
 
         return filteredUserTopics.stream()
-                .map(userTopic -> topicRepository.findById(userTopic.getTopicId()).orElse(null))
+                .map(userTopic -> topicRepository.findById(userTopic.getTopic().getTopicId()).orElse(null))
                 .filter(Objects::nonNull)
                 .toList();
     }
@@ -110,7 +110,7 @@ public class UserTopicService {
                 .toList();
 
         return filteredUserTopics.stream()
-                .map(userTopic -> topicRepository.findById(userTopic.getTopicId()).orElse(null))
+                .map(userTopic -> topicRepository.findById(userTopic.getTopic().getTopicId()).orElse(null))
                 .filter(Objects::nonNull)
                 .toList();
     }
@@ -123,18 +123,24 @@ public class UserTopicService {
         Topic topic = topicRepository.findById(topicId).orElseThrow(() -> new RuntimeException("Topic not found"));
 
         // if topic is already unlocked, return
-        if (userTopicRepository.existsByUserIdAndTopicId(userId, topic.getTopicId())) {
+        if (userTopicRepository.existsByUserIdAndTopicTopicId(userId, topic.getTopicId())) {
             return;
         }
 
         UserTopic userTopic = UserTopic.builder()
                 .userId(userId)
-                .topicId(topic.getTopicId())
+                .topic(topic)
                 .completed(false)
                 .unlocked(true)
-                .unlockedModules(new ArrayList<>())
-                .completedModules(new ArrayList<>())
+                .userModules(new ArrayList<>())
                 .build();
+        // Prüfe ob das Topic Module hat
+        if (topic.getModules() == null || topic.getModules().isEmpty()) {
+            System.out.println("Topic " + topic.getTitle() + " hat keine Module, erstelle nur UserTopic");
+            userTopicRepository.save(userTopic);
+            return;
+        }
+
         UserModules userModules = UserModules.builder()
                 .userId(userId)
                 .userTopic(userTopic)
@@ -142,8 +148,7 @@ public class UserTopicService {
                 .unlocked(true)
                 .completed(false)
                 .build();
-        userTopic.getUnlockedModules().add(userModules);
-        userTopic.setCompletedModules(new ArrayList<>());
+        userTopic.addUserModule(userModules);
 
         userTopicRepository.save(userTopic);
     }
@@ -151,7 +156,7 @@ public class UserTopicService {
     @Transactional
     public void unlockModule(String userId, Long topicId, Long moduleId) {
         // Find the existing UserTopic
-        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicIdOrderByIdAsc(userId, topicId);
+        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicTopicId(userId, topicId);
 
         // Find the module to unlock
         Module module = moduleRepository.findById(moduleId)
@@ -171,8 +176,8 @@ public class UserTopicService {
                     .completed(false)
                     .build();
 
-            // Add the new UserModule to the unlockedModules list
-            userTopic.getUnlockedModules().add(userModule);
+            // Add the new UserModule using helper method
+            userTopic.addUserModule(userModule);
 
             // Save the updated UserTopic entity
             userTopicRepository.save(userTopic);
@@ -212,17 +217,31 @@ public class UserTopicService {
 
     @Transactional
     public UserTopicDTO findByUserIdAndTopicId(String userId, Long topicId) {
-        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicIdOrderByIdAsc(userId, topicId);
+        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicTopicId(userId, topicId);
+        
+        // Debug: Überprüfe die Module-Status
+        System.out.println("=== DEBUG: findByUserIdAndTopicId ===");
+        System.out.println("UserTopic ID: " + userTopic.getId());
+        System.out.println("Total user modules count: " + userTopic.getUserModules().size());
+        System.out.println("Unlocked modules count: " + userTopic.getUnlockedModules().size());
+        System.out.println("Completed modules count: " + userTopic.getCompletedModules().size());
+        
+        userTopic.getUserModules().forEach(module -> {
+            System.out.println("UserModule ID: " + module.getModule().getId() + ", unlocked: " + module.isUnlocked() + ", completed: " + module.isCompleted());
+        });
+        
+        // Module basierend auf ihren Eigenschaften filtern
         List<UserModuleDTO> unlockedModulesDTO = userTopic.getUnlockedModules().stream()
                 .map(this::mapUserModuleToUserModuleDTO)
                 .toList();
+        
         List<UserModuleDTO> completedModulesDTO = userTopic.getCompletedModules().stream()
                 .map(this::mapUserModuleToUserModuleDTO)
                 .toList();
 
         return UserTopicDTO.builder()
                 .userId(userTopic.getUserId())
-                .topicId(userTopic.getTopicId())
+                .topicId(userTopic.getTopic().getTopicId())
                 .completed(userTopic.isCompleted())
                 .unlocked(userTopic.isUnlocked())
                 .unlockedModules(unlockedModulesDTO)
@@ -260,14 +279,14 @@ public class UserTopicService {
         userModule.setCompleted(true);
         userModulesRepository.save(userModule);
 
-        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicIdOrderByIdAsc(userId, userModule.getUserTopic().getTopicId());
-        userTopic.getCompletedModules().add(userModule);
+        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicTopicId(userId, userModule.getUserTopic().getTopic().getTopicId());
+        
+        // Das Modul bleibt in der userModules-Liste, wird nur als completed markiert
+        // Keine separate Liste mehr nötig
         userTopicRepository.save(userTopic);
 
         Module module = moduleRepository.findById(moduleId).orElseThrow(() -> new RuntimeException("Module not found"));
         Topic topic = module.getTopic();
-        List<UserModules> userModules = userModulesRepository.findByUserIdAndUserTopicId(userId, topic.getTopicId());
-
         System.out.println("user topic size : " + userTopic.getCompletedModules().size());
         System.out.println("topic modules size: " + topic.getModules().size());
 
@@ -283,10 +302,10 @@ public class UserTopicService {
 
     @Transactional
     private void completeTopic(String userId, Long topicId) {
-        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicIdOrderByIdAsc(userId, topicId);
+        UserTopic userTopic = userTopicRepository.findByUserIdAndTopicTopicId(userId, topicId);
         userTopic.setCompleted(true);
         userTopicRepository.save(userTopic);
-        System.out.println("Topic completed: " + userTopic.getTopicId());
+        System.out.println("Topic completed: " + userTopic.getTopic().getTopicId());
         //unlockNextTopic(userId, topicId);
     }
 
@@ -314,7 +333,7 @@ public class UserTopicService {
         return UserTopicDTO.builder()
                 .id(userTopic.getId())
                 .userId(userTopic.getUserId())
-                .topicId(userTopic.getTopicId())
+                .topicId(userTopic.getTopic().getTopicId())
                 .completed(userTopic.isCompleted())
                 .unlocked(userTopic.isUnlocked())
                 .unlockedModules(userTopic.getUnlockedModules().stream().map(this::convertUserModulesToDTO).toList())
@@ -326,11 +345,12 @@ public class UserTopicService {
         UserTopic userTopic = new UserTopic();
         userTopic.setId(userTopicDTO.getId());
         userTopic.setUserId(userTopicDTO.getUserId());
-        userTopic.setTopicId(userTopicDTO.getTopicId());
+        // Set topic reference instead of topicId
+        Topic topic = topicRepository.findById(userTopicDTO.getTopicId()).orElseThrow(() -> new RuntimeException("Topic not found"));
+        userTopic.setTopic(topic);
         userTopic.setCompleted(userTopicDTO.isCompleted());
         userTopic.setUnlocked(userTopicDTO.isUnlocked());
-        userTopic.setUnlockedModules(userTopicDTO.getUnlockedModules().stream().map(this::convertUserModuleDTOToUserModules).toList());
-        userTopic.setCompletedModules(userTopicDTO.getCompletedModules().stream().map(this::convertUserModuleDTOToUserModules).toList());
+        userTopic.setUserModules(userTopicDTO.getUnlockedModules().stream().map(this::convertUserModuleDTOToUserModules).toList());
         return userTopic;
     }
 

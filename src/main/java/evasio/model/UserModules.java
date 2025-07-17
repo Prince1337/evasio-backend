@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +18,7 @@ public class UserModules {
 
     private String userId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_topic_id")
     @JsonIgnore
     private UserTopic userTopic;

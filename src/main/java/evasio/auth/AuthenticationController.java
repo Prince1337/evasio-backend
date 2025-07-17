@@ -82,7 +82,7 @@ public class AuthenticationController {
     }
 
     @PutMapping("/user/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody RegisterRequest request) {
+    public ResponseEntity<?> updateUser(@PathVariable String id, @RequestBody RegisterRequest request) {
         User user = authenticationService.updateUser(id, request);
         return ResponseEntity.ok(user);
     }

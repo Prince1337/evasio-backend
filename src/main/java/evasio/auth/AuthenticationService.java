@@ -184,7 +184,7 @@ public class AuthenticationService {
         }
     }
 
-    public User updateUser(Long id, RegisterRequest request) {
+    public User updateUser(String id, RegisterRequest request) {
         User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());

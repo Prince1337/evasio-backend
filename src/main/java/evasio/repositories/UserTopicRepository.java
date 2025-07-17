@@ -11,9 +11,9 @@ public interface UserTopicRepository extends JpaRepository<UserTopic, Long> {
 
     List<UserTopic> findAllByUserId(String userId);
 
-    UserTopic findByUserIdAndTopicIdOrderByIdAsc(String userId, Long topicId);
+    UserTopic findByUserIdAndTopicTopicId(String userId, Long topicId);
 
     List<UserTopic> findByUserId(String userId);
 
-    boolean existsByUserIdAndTopicId(String userId, Long topicId);
+    boolean existsByUserIdAndTopicTopicId(String userId, Long topicId);
 }

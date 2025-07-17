@@ -45,7 +45,7 @@ public class ModuleService {
         Module module = convertToEntity(moduleDto);
         Module savedModule = moduleRepository.save(module);
         Topic topic = topicRepository.findByTopicId(moduleDto.getTopicId());
-        topic.getModules().add(savedModule);
+        topic.addModule(savedModule);
         topicRepository.save(topic);
         return convertToDto(savedModule);
     }
@@ -104,25 +104,30 @@ public class ModuleService {
 
 
     private Module convertToEntity(ModuleDTO moduleDto) {
-        Module module = new Module();
-        module.setId(moduleDto.getId());
-        module.setTitle(moduleDto.getTitle());
-        module.setContent(moduleDto.getContent());
-        module.setTopic(topicRepository.findByTopicId(moduleDto.getTopicId()));
-        module.setQuizzes(moduleDto.getQuizzes().stream().map(this::convertQuizToEntity).collect(Collectors.toList()));
-        // You might need to set the topic object as well if it's not being handled elsewhere
-        // module.setTopic(topicRepository.findById(moduleDto.getTopicId()).orElse(null));
-        // Set other fields as necessary
+        Module module = Module.builder()
+                .id(moduleDto.getId())
+                .title(moduleDto.getTitle())
+                .content(moduleDto.getContent())
+                .topic(topicRepository.findByTopicId(moduleDto.getTopicId()))
+                .build();
+        
+        if (moduleDto.getQuizzes() != null) {
+            moduleDto.getQuizzes().stream()
+                    .map(this::convertQuizToEntity)
+                    .forEach(module::addQuiz);
+        }
         return module;
     }
 
     private Quiz convertQuizToEntity(QuizDTO quizDto) {
-        Quiz quiz = new Quiz();
-        quiz.setId(quizDto.getId());
-        quiz.setQuestion(quizDto.getQuestion());
-        quiz.setCorrectAnswer(quizDto.getCorrectAnswer());
-        // Set other fields as necessary
-        return quiz;
+        return Quiz.builder()
+                .id(quizDto.getId())
+                .question(quizDto.getQuestion())
+                .correctAnswer(quizDto.getCorrectAnswer())
+                .options(quizDto.getOptions())
+                .questionType(quizDto.getQuestionType())
+                .matchingOptions(quizDto.getMatchingOptions())
+                .build();
     }
 
     public ModuleDTO findByTitleAndTopicTopicId(String moduleTitle, Long topicId) {
